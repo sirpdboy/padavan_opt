@@ -4,9 +4,9 @@ OLDGW1=$1
 OLDGW2=`ip route show | grep '^default' | sed -e 's/default via \([^ ]*\).*/\1/' | sed -n '1p'`
 [ ! -z $OLDGW1 ] && OLDGW=$OLDGW1
 [ -z $OLDGW1 ] && OLDGW=$OLDGW2
-logger -t "VPN分流" "国内IP分流到$OLDGW网关"
+logger -t "[VPN SHUNT]" "Domestic IP shunting to $OLDGW gateway."
 if [ $OLDGW == '' ]; then
-    logger -t "VPN分流" "错误！没找到网关"
+    logger -t "[VPN SHUNT]" "Wrong! Gateway not found!"
     exit 0
 fi
 
